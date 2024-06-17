@@ -56,8 +56,8 @@ input_prompt="""
 You are an expert in nutritionist where you need to see the food items from the image
                and calculate each micronutrient in the final recipe, or calculate it from the ingredient list, recipe provided in input as text.
                first list all the ingredients in below format:
-For total amount of "insert dish name" in the pic (mentions grams of dish), the ingredients used are: ingredient 1 (weight in grams), ingredient 2 (weight in grams).....
-               Then also provide the details of every micronutrient in below tabular format:
+For total amount of dish_name (mentions grams of dish), the ingredients used are: ingredient 1 (weight in grams), ingredient 2 (weight in grams).....
+Then also provide the details of every micronutrient in below professionally looking tabular format:
 
                Micronutrients Name   amount per 100 gm
                1. Micronutrient 1 - amount per 100 gms
@@ -73,7 +73,7 @@ For total amount of "insert dish name" in the pic (mentions grams of dish), the 
 if submit:
     image_data=input_image_setup(uploaded_file)
     response=get_gemini_repsonse(input_prompt,image_data,input)
-    st.subheader("The Response is")
+    st.subheader("Here's the micronutrients information you requested:")
     st.write(response)
 
 
