@@ -35,10 +35,10 @@ def input_image_setup(uploaded_file):
     
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Gemini Health App")
+st.set_page_config(page_title="Micronutrients Calculator")
 
-st.header("Gemini Health App")
-input=st.text_input("Input Prompt: ",key="input")
+st.header("Micronutrients Calculator")
+input=st.text_input("Insert the Ingredient list: ",key="input")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 image=""   
 if uploaded_file is not None:
