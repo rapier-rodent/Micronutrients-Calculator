@@ -35,10 +35,10 @@ def input_image_setup(uploaded_file):
     
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Gemini Health App")
+st.set_page_config(page_title="Micronutrients Calculator")
 
-st.header("Gemini Health App")
-input=st.text_input("Input Prompt: ",key="input")
+st.header("Micronutrients Calculator")
+input=st.text_input("You can share any additional info for the dish here: ",key="input")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 image=""   
 if uploaded_file is not None:
@@ -46,15 +46,19 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Tell me the total calories")
+submit=st.button("Calculate the Micronutrients")
 
 input_prompt="""
-You are an expert in nutritionist where you need to see the food items from the image
-               and calculate the total calories, also provide the details of every food items with calories intake
-               is below format
+You are an expert nutritionist where you need to see the food items from the image
+               and calculate the micronutrients, 
+               First provide the list of ingredients in following format:
+               For amount of dish_name in grams, inredients are: ingredient 1 (amount in grams), ingredient 2 (amount in grams), ...
+               Then in a professionally presentable tabular form, provide the details of every micronutrient including the fatty acids and other minutely calculabe micronutrients per 100 gm of the dish
+               in the below format
 
-               1. Item 1 - no of calories
-               2. Item 2 - no of calories
+                  Name                Amount per 100 gm
+               1. Micronutrient 1 - amount per 100 gm
+               2. Micronutrient 1 - amount per 100 gm
                ----
                ----
 
