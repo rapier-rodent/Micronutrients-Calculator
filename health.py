@@ -49,7 +49,7 @@ if uploaded_file is not None:
 submit=st.button("Calculate the Micronutrients")
 
 input_prompt="""
-You are an expert nutritionist where you need to see the food items from the image
+You are an expert nutritionist where you need to see the food items from the image, figure out the ingredients, exclude ingredients that are optional and are not evidently visible in the pic.
                and calculate the micronutrients, 
                First provide the list of ingredients in following format:
                For amount of dish_name in grams, inredients are: ingredient 1 (amount in grams), ingredient 2 (amount in grams), ...
