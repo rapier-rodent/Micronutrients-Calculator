@@ -19,7 +19,7 @@ def get_gemini_repsonse(input,image,prompt):
 
 def input_image_setup(uploaded_file):
     # Check if a file has been uploaded
-    if uploaded_file is not None:
+   if uploaded_file is not None:
         # Read the file into bytes
         bytes_data = uploaded_file.getvalue()
 
@@ -30,7 +30,6 @@ def input_image_setup(uploaded_file):
             }
         ]
         return image_parts
-   
     else:
         raise FileNotFoundError("No info provided")
     
