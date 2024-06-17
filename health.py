@@ -30,10 +30,7 @@ def input_image_setup(uploaded_file):
             }
         ]
         return image_parts
-    else:
-    response=get_gemini_repsonse(input_prompt,input)
-    st.subheader("The Response is")
-    st.write(response)    
+   
     else:
         raise FileNotFoundError("No info provided")
     
