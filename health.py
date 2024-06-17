@@ -70,6 +70,6 @@ You are an expert nutritionist where you need to see the food items from the ima
 if submit:
     image_data=input_image_setup(uploaded_file)
     response=get_gemini_repsonse(input_prompt,image_data,input)
-    st.subheader("The Response is")
+    st.subheader("Here's the Micronutrient information you requested: ")
     st.write(response)
 
