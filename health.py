@@ -19,7 +19,7 @@ def get_gemini_repsonse(input,image,prompt):
 
 def input_image_setup(uploaded_file):
     # Check if a file has been uploaded
-   if uploaded_file is not None:
+    if uploaded_file is not None:
         # Read the file into bytes
         bytes_data = uploaded_file.getvalue()
 
@@ -31,14 +31,14 @@ def input_image_setup(uploaded_file):
         ]
         return image_parts
     else:
-        raise FileNotFoundError("No info provided")
+        raise FileNotFoundError("No file uploaded")
     
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Micronutrients Calculator")
+st.set_page_config(page_title="Gemini Health App")
 
-st.header("Micronutrients Calculator")
-input=st.text_input("Insert the Ingredient list: ",key="input")
+st.header("Gemini Health App")
+input=st.text_input("Input Prompt: ",key="input")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 image=""   
 if uploaded_file is not None:
@@ -46,18 +46,15 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Micronutrients calculation")
+submit=st.button("Tell me the total calories")
 
 input_prompt="""
 You are an expert in nutritionist where you need to see the food items from the image
-               and calculate each micronutrient in the final recipe, or calculate it from the ingredient list, recipe provided in input as text.
-               first list all the ingredients in below format:
-For total amount of dish_name (mentions grams of dish), the ingredients used are: ingredient 1 (weight in grams), ingredient 2 (weight in grams).....
-Then also provide the details of every micronutrient in below professionally looking tabular format:
+               and calculate the total calories, also provide the details of every food items with calories intake
+               is below format
 
-               Micronutrients Name   amount per 100 gm
-               1. Micronutrient 1 - amount per 100 gms
-               2. Micronutrient 1 - amount per 100 gms
+               1. Item 1 - no of calories
+               2. Item 2 - no of calories
                ----
                ----
 
@@ -69,7 +66,6 @@ Then also provide the details of every micronutrient in below professionally loo
 if submit:
     image_data=input_image_setup(uploaded_file)
     response=get_gemini_repsonse(input_prompt,image_data,input)
-    st.subheader("Here's the micronutrients information you requested:")
+    st.subheader("The Response is")
     st.write(response)
-
 
